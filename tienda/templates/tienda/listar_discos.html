@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Discos</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'tienda/discos.css' %}">
+
+
+</head>
+
+
+<body>
+
+    <header>
+        <figure>
+            <img src="../../../media/discos/logo.png" alt="">
+        </figure>
+
+
+        <ul>
+            <li>
+                <a href=""><i class="fas fa-compact-disc"></i> Distri</a>
+            </li>
+
+            <li>
+                <a href="{% url 'lista_merch' %}"><i class=" fas fa-tshirt"></i> Merch</a>
+            </li>
+
+            <li>
+                <a href=""><i class="fas fa-calendar-alt"></i> Conciertos</a>
+            </li>
+
+        </ul>
+
+    </header>
+
+    <main>
+
+
+        <div class="container">
+            {% for disco in discos %}
+            <div class="disco">
+                <h2>{{ disco.titulo }}</h2>
+
+
+                <figure>
+                    <img src="{{ disco.imagen.url }}" alt="{{ disco.titulo }}">
+                </figure>
+
+                <p>{{ disco.descripcion }}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </main>
+</body>
+
+</html>

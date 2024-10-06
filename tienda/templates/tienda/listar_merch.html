@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Discos</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'tienda/merch.css' %}">
+
+
+</head>
+
+
+<body>
+
+    <header>
+        <figure>
+            <img src="../../../media/discos/logo.png" alt="">
+        </figure>
+
+
+        <ul>
+            <li>
+                <a href="{% url 'lista_discos' %}"><i class="fas fa-compact-disc"></i> Distri</a>
+            </li>
+
+            <li>
+                <a href=""><i class="fas fa-tshirt"></i> Merch</a>
+            </li>
+
+            <li>
+                <a href=""><i class="fas fa-calendar-alt"></i> Conciertos</a>
+            </li>
+
+        </ul>
+
+    </header>
+
+    <main>
+
+
+        <div class="container">
+            {% for merch in merch %}
+            <div class="disco">
+                <h2>{{ merch.nombre }}</h2>
+
+
+                <figure>
+                    <img src="{{ merch.imagen.url }}" alt="{{ merch.nombre }}">
+                    <p>{{ merch.descripcion }}</p>
+                    <p class="precio">{{ merch.precio }}€</p>
+                </figure>
+
+                <p>{{ merch.descripcion }}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </main>
+</body>
+
+</html>
